@@ -150,7 +150,7 @@ module AuthorizeNet
       set_fields(amount: amount)
       set_fields(first_name: first_name)
       set_fields(last_name: last_name)
-      set_fields(phone_number: phone)
+      set_fields(phone: phone)
       set_fields(email: email)
 
       self.type = Type::AUTHORIZE_AND_CAPTURE
