@@ -143,7 +143,7 @@ module AuthorizeNet
     #   credit_card = AuthorizeNet::CreditCard.new('4111111111111111', '1120')
     #   response = transaction.purchase(10.0, credit_card)
     # 
-    def purchase(amount, credit_card, first_name, last_name, phone, email, options = {})
+    def purchase(amount, credit_card, first_name, last_name, phone, email, address, city, state, zip, options = {})
       handle_payment_argument(credit_card)
       options = @@purchase_option_defaults.merge(options)
       handle_cavv_options(options)
@@ -152,7 +152,10 @@ module AuthorizeNet
       set_fields(last_name: last_name)
       set_fields(phone: phone)
       set_fields(email: email)
-
+      set_fields(address: address)
+      set_fields(city: city)
+      set_fields(state: state)
+      set_fields(zip: zip)
       self.type = Type::AUTHORIZE_AND_CAPTURE
       run
     end
